@@ -21,6 +21,11 @@ function Header(){
   
 }
 function App(){
+  const [topics, setTopics] = useState([
+    {id:1, title:'공경진 프로젝트',body:"딥러닝 파트 확인"},
+    {id:2, title:"봉사 웹 API", body :"API 만들기"},
+    {id:3, title:"경영학 공부", body :"경영학 듣기"}
+  ]);
   return (
     <div>
       <Header/>
