@@ -2,11 +2,31 @@ import logo from './logo.svg';
 import './App.css';
 import {useState} from 'react';
 
-function App(){
-  return 
-  <div>
+function Header(){
+  return(
+  <div className='container'>
+    <header>
+      <nav>
+        <div className='icon'>TODO List</div>
+        <div className='gnb'>
+          <a>해야될 일</a>
+          <a>하고 있는 일</a>
+          <a>완료한 일</a>
+        </div>
 
+      </nav>
+    </header>
   </div>
+  )
+  
+}
+function App(){
+  return (
+    <div>
+      <Header/>
+    </div>
+  );
+  
 }
 /*
 function Header(props){
