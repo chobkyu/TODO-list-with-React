@@ -20,15 +20,34 @@ function Header(){
   )
   
 }
+/*
+function Article(props){
+  console.log(props.title);
+  <h3>{props.title}</h3>
+  
+}*/
+
+function ToDO({topic}){
+  return(
+    <div>
+      <h4>{topic.title}</h4>
+    </div>
+  )
+}
 function App(){
   const [topics, setTopics] = useState([
     {id:1, title:'공경진 프로젝트',body:"딥러닝 파트 확인"},
     {id:2, title:"봉사 웹 API", body :"API 만들기"},
     {id:3, title:"경영학 공부", body :"경영학 듣기"}
   ]);
+
+  //let content = <Article title={topics.title}></Article>
   return (
     <div>
       <Header/>
+      {topics.map(topic=>(
+        <ToDO topic={topic} key={topics.id}/>
+      ))}
     </div>
   );
   
