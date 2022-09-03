@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import {useState} from 'react';
+import {useRef, useState} from 'react';
+import CreateTodo from './CreateTodo';
 
 function Header(){
   return(
@@ -34,12 +35,45 @@ function ToDO({topic}){
     </div>
   )
 }
+
 function App(){
   const [topics, setTopics] = useState([
     {id:1, title:'공경진 프로젝트',body:"딥러닝 파트 확인"},
     {id:2, title:"봉사 웹 API", body :"API 만들기"},
     {id:3, title:"경영학 공부", body :"경영학 듣기"}
   ]);
+
+  const [inputs, setInputs] = useState({
+    title:'',
+    body:'',
+
+  });
+
+  const {title, body} = inputs;
+
+  const onChange = e => {
+    const {name,value} = e.target;
+    setInputs({
+      ...inputs,
+      [name] : value
+    })
+  }
+  const nextId = useRef(4);
+
+  const onCreate =() =>{
+    const topic = {
+      id: nextId.current,
+      title,
+      body,
+    }
+    setTopics([...topics,topic])
+    setInputs({
+      title:'',
+      body:''
+    })
+  }
+
+  nextId.current+=1;
 
   //let content = <Article title={topics.title}></Article>
   return (
@@ -48,6 +82,12 @@ function App(){
       {topics.map(topic=>(
         <ToDO topic={topic} key={topics.id}/>
       ))}
+      <CreateTodo
+        title={title}
+        body={body}
+        onChange={onChange}
+        onCreate={onCreate}
+        />
     </div>
   );
   
