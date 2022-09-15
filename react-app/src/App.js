@@ -83,7 +83,7 @@ function App(){
     })
   }
 
-  const getTextValue = (title, body) => {  //하고 있는 일 추가
+  const getTextValue = (title, body) => {  //하고 있는 일 추가함
     console.log(title+"  "+body)
     const topic = {
       id: doingId.current,
