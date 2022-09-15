@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {useRef, useState} from 'react';
 import CreateTodo from './CreateTodo';
@@ -21,17 +20,19 @@ function Header(){
   )
   
 }
-/*
-function Article(props){
-  console.log(props.title);
-  <h3>{props.title}</h3>
-  
-}*/
 
-function ToDO({topic}){
+
+
+function ToDO(props){
+  const onclick = () => {
+    console.log(props.topic.title);
+    console.log(props.topic.body);
+    props.getTextValue(props.topic.title, props.topic.body);
+  }
   return(
     <div>
-      <h4>{topic.title}</h4>
+      <h4 key={props.key} title={props.topic.body}> {props.topic.title}</h4>
+      <button onClick={onclick}>시작하기</button>
     </div>
   )
 }
@@ -41,13 +42,21 @@ function App(){
     {id:1, title:'공경진 프로젝트',body:"딥러닝 파트 확인"},
     {id:2, title:"봉사 웹 API", body :"API 만들기"},
     {id:3, title:"경영학 공부", body :"경영학 듣기"}
-  ]);
+  ]);  //해야 될 일 객체
 
   const [inputs, setInputs] = useState({
     title:'',
     body:'',
 
-  });
+  });//해야 될 일 추가 객체
+
+  const [doing,setDoing] = useState([{
+    id:'',
+    title:'',
+    body:''
+  }
+  
+  ]);
 
   const {title, body} = inputs;
 
@@ -59,6 +68,7 @@ function App(){
     })
   }
   const nextId = useRef(4);
+  const doingId = useRef(1);
 
   const onCreate =() =>{
     const topic = {
@@ -73,14 +83,33 @@ function App(){
     })
   }
 
+  const getTextValue = (title, body) => {  //하고 있는 일 추가
+    console.log(title+"  "+body)
+    const topic = {
+      id: doingId.current,
+      title:{title},
+      body:{body},
+    }
+   
+    console.log({topic});
+
+    setDoing(prevList => [...prevList,topic]);
+    console.log({doing});
+  }
+
   nextId.current+=1;
+  doingId.current+=1;
+  
+
+ 
 
   //let content = <Article title={topics.title}></Article>
   return (
     <div>
       <Header/>
+      
       {topics.map(topic=>(
-        <ToDO topic={topic} key={topics.id}/>
+        <ToDO topic={topic} key={topics.id} getTextValue={getTextValue}/>
       ))}
       <CreateTodo
         title={title}
