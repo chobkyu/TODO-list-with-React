@@ -1,4 +1,8 @@
 .App {
+  font-family: sans-serif;
+  text-align: center;
+}
+.App {
   text-align: center;
 }
 
@@ -37,7 +41,7 @@
   }
 }
 
-.container{
+.container {
   margin: 0;
   color: #eee;
   line-height: 1.5em;
@@ -47,41 +51,40 @@
   box-sizing: border-box;
 }
 
-.container a{
+.container a {
   text-decoration: none;
   color: #eee;
   font-size: 20px;
 }
 
-header{
-  font-weight:normal;
-  background : #222;
-  box-shadow: 5px 0 15px rgba(0,0,0,0.15);
+header {
+  font-weight: normal;
+  background: #222;
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.15);
 }
 
 nav {
- 
-  width : 1100px;
-  margin : auto;
+  width: 1100px;
+  margin: auto;
 }
 
-nav>div{
+nav > div {
   /*border:1px solid #000;*/
-  height:70px;
-  line-height:70px;
+  height: 70px;
+  line-height: 70px;
 }
 
-.icon{
-  float:left;
-  width:180px;
+.icon {
+  float: left;
+  width: 180px;
   line-height: 70px;
   text-align: center;
 }
-.gnb{
-  margin:auto;
-  text-align:center;
+.gnb {
+  margin: auto;
+  text-align: center;
 }
 
-.gnb a{
-  margin :20px;
+.gnb a {
+  margin: 20px;
 }

@@ -1,126 +1,157 @@
-import './App.css';
-import {useRef, useState} from 'react';
-import CreateTodo from './CreateTodo';
+import "./App.css";
 
-function Header(){
-  return(
-  <div className='container'>
-    <header>
-      <nav>
-        <div className='icon'>TODO List</div>
-        <div className='gnb'>
-          <a>해야될 일</a>
-          <a>하고 있는 일</a>
-          <a>완료한 일</a>
-        </div>
-
-      </nav>
-    </header>
-  </div>
-  )
-  
-}
-
-
-
-function ToDO(props){
+import Main from "./Main";
+import Header from "./Header";
+import Doing from "./Doing";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { useRef, useState } from "react";
+/*
+function ToDO(props) {
   const onclick = () => {
     console.log(props.topic.title);
     console.log(props.topic.body);
     props.getTextValue(props.topic.title, props.topic.body);
-  }
-  return(
+  };
+  return (
     <div>
-      <h4 key={props.key} title={props.topic.body}> {props.topic.title}</h4>
+      <h4 key={props.key} title={props.topic.body}>
+        {" "}
+        {props.topic.title}
+      </h4>
       <button onClick={onclick}>시작하기</button>
     </div>
-  )
-}
+  );
+}*/
 
-function App(){
+function App() {
+  /*
   const [topics, setTopics] = useState([
-    {id:1, title:'공경진 프로젝트',body:"딥러닝 파트 확인"},
-    {id:2, title:"봉사 웹 API", body :"API 만들기"},
-    {id:3, title:"경영학 공부", body :"경영학 듣기"}
-  ]);  //해야 될 일 객체
+    { id: 1, title: "공경진 프로젝트", body: "딥러닝 파트 확인" },
+    { id: 2, title: "봉사 웹 API", body: "API 만들기" },
+    { id: 3, title: "경영학 공부", body: "경영학 듣기" }
+  ]); //해야 될 일 객체
 
   const [inputs, setInputs] = useState({
-    title:'',
-    body:'',
+    title: "",
+    body: ""
+  }); //해야 될 일 추가 객체
 
-  });//해야 될 일 추가 객체
-
-  const [doing,setDoing] = useState([{
-    id:'',
-    title:'',
-    body:''
-  }
-  
+  const [doing, setDoing] = useState([
+    {
+      id: "",
+      title: "",
+      body: ""
+    }
   ]);
 
-  const {title, body} = inputs;
+  const { title, body } = inputs;
 
-  const onChange = e => {
-    const {name,value} = e.target;
+  const onChange = (e) => {
+    const { name, value } = e.target;
     setInputs({
       ...inputs,
-      [name] : value
-    })
-  }
+      [name]: value
+    });
+  };
   const nextId = useRef(4);
   const doingId = useRef(1);
 
-  const onCreate =() =>{
+  const onCreate = () => {
     const topic = {
       id: nextId.current,
       title,
-      body,
-    }
-    setTopics([...topics,topic])
+      body
+    };
+    setTopics([...topics, topic]);
     setInputs({
-      title:'',
-      body:''
-    })
-  }
+      title: "",
+      body: ""
+    });
+  };
 
-  const getTextValue = (title, body) => {  //하고 있는 일 추가함
-    console.log(title+"  "+body)
+  const getTextValue = (title, body) => {
+    //하고 있는 일 추가함
+    console.log(title + "  " + body);
     const topic = {
       id: doingId.current,
-      title:{title},
-      body:{body},
-    }
-   
-    console.log({topic});
+      title: { title },
+      body: { body }
+    };
 
-    setDoing(prevList => [...prevList,topic]);
-    console.log({doing});
-  }
+    console.log({ topic });
 
-  nextId.current+=1;
-  doingId.current+=1;
-  
+    setDoing((prevList) => [...prevList, topic]);
+    console.log({ doing });
+  };
 
- 
-
+  nextId.current += 1;
+  doingId.current += 1;
+*/
   //let content = <Article title={topics.title}></Article>
+  const nextId = useRef(4);
+  const doingId = useRef(1);
+  const [topics, setTopics] = useState([
+    { id: 1, title: "공경진 프로젝트", body: "딥러닝 파트 확인" },
+    { id: 2, title: "봉사 웹 API", body: "API 만들기" },
+    { id: 3, title: "경영학 공부", body: "경영학 듣기" }
+  ]); //해야 될 일 객체
+
+  const getValue = (title, body) => {
+    console.log(title + " " + body);
+    const topic = {
+      id: nextId.current,
+      title: title,
+      body: body
+    };
+    setTopics([...topics, topic]);
+  };
+
+  const [toDoing, setToDoing] = useState([
+    {
+      id: "",
+      title: "",
+      body: ""
+    }
+  ]);
+  const gettoDoing = (title, body) => {
+    console.log(title + "  " + body + "입니다");
+    const doing = {
+      id: doingId.current,
+      title: { title },
+      body: { body }
+    };
+
+    setToDoing((prevList) => [...prevList, doing]);
+    console.log({ toDoing });
+  };
+
+  nextId.current += 1;
+  doingId.current += 1;
+
   return (
     <div>
-      <Header/>
-      
-      {topics.map(topic=>(
-        <ToDO topic={topic} key={topics.id} getTextValue={getTextValue}/>
-      ))}
-      <CreateTodo
-        title={title}
-        body={body}
-        onChange={onChange}
-        onCreate={onCreate}
-        />
+      <Header />
+      <BrowserRouter>
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              <Main
+                topics={topics}
+                getValue={getValue}
+                gettoDoing={gettoDoing}
+              />
+            }
+          />
+          <Route path="/doing" element={<Doing doings={toDoing} />} />
+          <Route path="/complete" />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
-  
 }
+
 /*
 function Header(props){
   return  <header>
