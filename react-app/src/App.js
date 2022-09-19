@@ -28,9 +28,7 @@ function App() {
 
   const [toDoing, setToDoing] = useState([
     {
-      id: "0",
-      title: "",
-      body: ""
+     
     }
   ]);
 
