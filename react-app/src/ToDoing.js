@@ -9,9 +9,9 @@ function ToDoing(props) {
   };
   return (
     <div>
-      <div className="todo" key={props.topic.id}>
-        <h3>{props.topic.title}</h3>
-        <h6>{props.topic.body}</h6>
+      <div  key={props.topic.id}>
+        <h3 className="todo">{props.topic.title}</h3>
+        <h5 className="todo-body">{props.topic.body}</h5>
         <button className="btn" onClick={onclick}>완료하기</button>
       </div>
       {""}

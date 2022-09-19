@@ -91,11 +91,16 @@ nav > div {
 }
 
 .todo{
-  margin-left: 20px;
+  margin: top 10px;
+  margin-left: 80px;
+}
+
+.todo-body{
+  margin-left: 100px;
 }
 
 .btn {
-  margin-left :80%;
+  margin-left :78%;
  
   padding : 10px;
   color : white;
