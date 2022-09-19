@@ -8,10 +8,10 @@ function ToDO(props) {
   };
   return (
     <div>
-      <h4 className="todo" key={props.key} title={props.topic.body}>
+      <h3 className="todo" key={props.key} title={props.topic.body}>
         {" "}
         {props.topic.title}
-      </h4>
+      </h3>
       <button className="btn" onClick={onclick}>시작하기</button>
       <hr></hr>
     </div>
