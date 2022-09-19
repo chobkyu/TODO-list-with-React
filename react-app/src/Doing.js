@@ -1,11 +1,20 @@
 import React from "react";
-import ToDO from "./ToDo";
+import ToDoing from "./ToDoing";
+
 function Doing(props) {
-  console.log(props.doings);
+  const getTextValue = (id, title, body) => {
+    console.log(id + " " + title + " " + body);
+    props.getComplete(id, title, body);
+  };
+
   return (
     <div>
-      {props.doings.map((topic) => (
-        <ToDO topic={topic} key={props.doings.id} />
+      {props.doings.map((doing) => (
+        <ToDoing
+          topic={doing}
+          key={props.doings.title}
+          getTextValue={getTextValue}
+        />
       ))}
     </div>
   );

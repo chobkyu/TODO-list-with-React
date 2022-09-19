@@ -13,9 +13,9 @@ function ToDO(props) {
         {props.topic.title}
       </h4>
       <button onClick={onclick}>시작하기</button>
+      <hr></hr>
     </div>
   );
 }
 
 export default ToDO;
-

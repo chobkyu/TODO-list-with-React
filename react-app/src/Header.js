@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -8,9 +8,9 @@ function Header() {
         <nav>
           <div className="icon">TODO List</div>
           <div className="gnb">
-            <a href="/">해야될 일</a>
-            <a href="/doing">하고 있는 일</a>
-            <a href="/complete">완료한 일</a>
+            <Link to="/">해야될 일</Link>
+            <Link to="/doing">하고 있는 일</Link>
+            <Link to="/complete">완료한 일</Link>
           </div>
         </nav>
       </header>

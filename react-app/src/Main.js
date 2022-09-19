@@ -1,5 +1,5 @@
 import React from "react";
-import { useRef, useState } from "react";
+import {  useState } from "react";
 import CreateTodo from "./CreateTodo";
 import ToDO from "./ToDo";
 
@@ -9,13 +9,7 @@ function Main(props) {
     body: ""
   }); //해야 될 일 추가 객체
 
-  const [doing, setDoing] = useState([
-    {
-      id: "",
-      title: "",
-      body: ""
-    }
-  ]);
+  
 
   const { title, body } = inputs;
 
@@ -26,7 +20,6 @@ function Main(props) {
       [name]: value
     });
   };
-  
 
   const onCreate = () => {
     console.log(inputs.title + " " + inputs.body);
@@ -39,7 +32,7 @@ function Main(props) {
 
   const getTextValue = (title, body) => {
     //하고 있는 일 추가함
-    
+
     props.gettoDoing(title, body);
 
     /*const topic = {
@@ -47,9 +40,7 @@ function Main(props) {
       title: { title },
       body: { body }
     };
-
     console.log({ topic });
-
     setDoing((prevList) => [...prevList, topic]);
     console.log({ doing });*/
   };
@@ -57,7 +48,11 @@ function Main(props) {
   return (
     <div>
       {props.topics.map((topic) => (
-        <ToDO topic={topic} key={props.topics.id} getTextValue={getTextValue} />
+        <ToDO
+          topic={topic}
+          key={props.topics.title}
+          getTextValue={getTextValue}
+        />
       ))}
       <CreateTodo
         title={title}
