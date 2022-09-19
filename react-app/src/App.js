@@ -27,9 +27,7 @@ function App() {
   };
 
   const [toDoing, setToDoing] = useState([
-    {
-     
-    }
+    
   ]);
 
   const gettoDoing = (title, body) => {
@@ -45,11 +43,7 @@ function App() {
   };
 
   const [toComplete, setToComplete] = useState([
-    {
-      id: "0",
-      title:"",
-      body:""
-    }
+   
   ]);
 
   const getComplete = (id, title, body) => {
