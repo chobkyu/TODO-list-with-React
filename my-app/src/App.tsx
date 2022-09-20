@@ -5,11 +5,16 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from './Main';
 import { useRef, useState } from "react";
 
+export interface Topics {
+  id:number,
+  title:string,
+  body:string,
+}
 function App() {
   const nextId = useRef(4);
   const doingId = useRef(1);
 
-  const [topics, setTopics] = useState([
+  const [topics, setTopics] = useState<Topics[]>([
     { id: 1, title: "공경진 프로젝트", body: "딥러닝 파트 확인" },
     { id: 2, title: "봉사 웹 API", body: "API 만들기" },
     { id: 3, title: "경영학 공부", body: "경영학 듣기" }

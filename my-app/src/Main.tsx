@@ -1,8 +1,8 @@
 import React from "react";
 import {  useState } from "react";
-import CreateTodo from "./CreateTodo";
+//import CreateTodo from "./CreateTodo";
 
-function Main(props) {
+function Main(props:any) {
     const [inputs, setInputs] = useState({
         title: "",
         body: ""
@@ -11,7 +11,7 @@ function Main(props) {
       
     
       const { title, body } = inputs;
-    
+    /*
       const onChange = (e) => {
         const { name, value } = e.target;
         setInputs({
@@ -27,7 +27,7 @@ function Main(props) {
           title: "",
           body: ""
         });
-      };
+      };*/
     
       const getTextValue = (title:string, body:string) => {
         //하고 있는 일 추가함

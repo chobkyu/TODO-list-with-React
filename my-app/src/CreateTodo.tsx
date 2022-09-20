@@ -1,5 +1,5 @@
 import React from 'react';
-
+/*
 function CreateTodo({title,body,onChange, onCreate}){
     return(
         <div >
@@ -24,5 +24,5 @@ function CreateTodo({title,body,onChange, onCreate}){
     </div>
     )
 }
-
-export default CreateTodo;
+*/
+//export default CreateTodo;
