@@ -1,6 +1,6 @@
 import React from 'react';
 
-function CreateTodo({title:any,body:string,onChange, onCreate}){
+function CreateTodo({title,body,onChange, onCreate}){
     return(
         <div >
         <div className='input-todo'>
