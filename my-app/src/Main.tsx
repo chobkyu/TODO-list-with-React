@@ -1,7 +1,12 @@
 import React from "react";
 import {  useState } from "react";
+import Topics from "./App";
+import ToDO from "./ToDO";
 //import CreateTodo from "./CreateTodo";
 
+export interface Topics {
+  topics:Topics;
+}
 function Main(props:any) {
     const [inputs, setInputs] = useState({
         title: "",
@@ -46,8 +51,13 @@ function Main(props:any) {
     
     return (
         <div>
-         
-          
+          {props.topics.map((topic:Topics) => (
+          <ToDO
+            topic={topic}
+            key={props.topics.title}
+            getTextValue={getTextValue}
+          />
+      ))}
         </div>
       );
 }

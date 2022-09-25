@@ -40,7 +40,7 @@ function App() {
             element={
               <Main
                 topics={topics}
-                getValue={getValue}
+                //getValue={getValue}
                // gettoDoing={gettoDoing}
               />
             }/>   
