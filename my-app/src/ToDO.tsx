@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-
+import Topics from "./App";
 function ToDO(props:any){
     const onclick = () => {
         console.log(props.topic.title);

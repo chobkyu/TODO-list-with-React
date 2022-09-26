@@ -3,6 +3,7 @@ import './App.css';
 import Header from './Header';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from './Main';
+import Doing from './Doing';
 import { useRef, useState } from "react";
 
 export interface Topics {
@@ -62,7 +63,13 @@ function App() {
               />
             }/>   
           
-          <Route path="/doing"/>
+          <Route path="/doing"
+            element={
+              <Doing 
+                doings={toDoing}
+              />
+            }
+          />
          
           <Route  path="/complete"/>
            
