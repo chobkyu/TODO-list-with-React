@@ -2,7 +2,10 @@ import React from "react";
 
 function ToDoing(props:any){
     const onclick = () => {
-        
+        console.log(props.topic.title);
+        console.log(props.topic.body);
+        console.log(props.topic.id);
+        props.getTextValue(props.topic.id, props.topic.title, props.topic.body);
     }
     return (
         <div>

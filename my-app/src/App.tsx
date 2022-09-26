@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from './Main';
 import Doing from './Doing';
 import { useRef, useState } from "react";
+import { CompletionInfoFlags } from 'typescript';
 
 export interface Topics {
   id:number,
@@ -46,9 +47,26 @@ function App() {
     setToDoing([...toDoing,doing]);
     console.log({toDoing});
   }
-  
+
+  const [toComplete,setToComplete] = useState<Topics[]>([]);
+
+  const getCompelte = (id:number, title:string, body:string) => {
+    const comp = {
+      id: id,
+      title: title,
+      body: body
+    };
+
+    setToComplete([...toComplete, comp]);
+    console.log({ toComplete });
+
+    setToDoing(toDoing.filter((todoing) => todoing.id !== id));
+    setTopics(topics.filter((topic) => topic.title !== title));
+  }
   nextId.current += 1;
   doingId.current += 1;
+
+  const complete = (id:number, title:string, body:string) => {};
   return (
     <div>
      <BrowserRouter>
@@ -67,6 +85,8 @@ function App() {
             element={
               <Doing 
                 doings={toDoing}
+                complete={complete}
+                getComplete={getCompelte}
               />
             }
           />
