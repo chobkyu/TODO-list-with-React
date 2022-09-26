@@ -4,8 +4,8 @@ import Header from './Header';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from './Main';
 import Doing from './Doing';
+import Complete from './Complete';
 import { useRef, useState } from "react";
-import { CompletionInfoFlags } from 'typescript';
 
 export interface Topics {
   id:number,
@@ -67,6 +67,7 @@ function App() {
   doingId.current += 1;
 
   const complete = (id:number, title:string, body:string) => {};
+  
   return (
     <div>
      <BrowserRouter>
@@ -91,7 +92,11 @@ function App() {
             }
           />
          
-          <Route  path="/complete"/>
+          <Route  path="/complete"
+            element={
+              <Complete complete={toComplete}/>
+            }
+          />
            
           
         </Routes>
