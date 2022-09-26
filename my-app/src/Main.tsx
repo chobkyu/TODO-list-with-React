@@ -2,7 +2,7 @@ import React from "react";
 import {  useState } from "react";
 import Topics from "./App";
 import ToDO from "./ToDO";
-//import CreateTodo from "./CreateTodo";
+import CreateTodo from "./CreateTodo";
 
 export interface Topics {
   topics:Topics;
@@ -16,8 +16,8 @@ function Main(props:any) {
       
     
       const { title, body } = inputs;
-    /*
-      const onChange = (e) => {
+    
+      const onChange = (e:any) => {
         const { name, value } = e.target;
         setInputs({
           ...inputs,
@@ -32,7 +32,7 @@ function Main(props:any) {
           title: "",
           body: ""
         });
-      };*/
+      };
     
       const getTextValue = (title:string, body:string) => {
         //하고 있는 일 추가함
@@ -52,12 +52,17 @@ function Main(props:any) {
     return (
         <div>
           {props.topics.map((topic:Topics) => (
-          <ToDO
-            topic={topic}
-            key={props.topics.title}
-            getTextValue={getTextValue}
-          />
-      ))}
+            <ToDO
+              topic={topic}
+              key={props.topics.title}
+              getTextValue={getTextValue}
+            />
+          ))}
+          <CreateTodo
+            title={title}
+            body={body}
+            onChange={onChange}
+            onCreate={onCreate}/>
         </div>
       );
 }
