@@ -39,14 +39,7 @@ function Main(props:any) {
     
         props.gettoDoing(title, body);
     
-        /*const topic = {
-          id: doingId.current,
-          title: { title },
-          body: { body }
-        };
-        console.log({ topic });
-        setDoing((prevList) => [...prevList, topic]);
-        console.log({ doing });*/
+        
       };
     
     return (

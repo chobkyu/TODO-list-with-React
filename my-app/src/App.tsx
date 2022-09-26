@@ -20,6 +20,7 @@ function App() {
     { id: 3, title: "경영학 공부", body: "경영학 듣기" }
   ]); //해야 될 일 객체
 
+  
   const getValue = (title:string, body:string) => {
     console.log(title + " " + body);
     const topic = {
@@ -30,7 +31,23 @@ function App() {
     setTopics([...topics, topic]);
   };
 
+
+  const [toDoing, setToDoing] = useState<Topics[]>([]);
+
+  const gettoDoing = (title:string,body:string) => {
+    console.log(title+ " " + body);
+    const doing = {
+      id : doingId.current,
+      title : title,
+      body : body,
+    };
+
+    setToDoing([...toDoing,doing]);
+    console.log({toDoing});
+  }
   
+  nextId.current += 1;
+  doingId.current += 1;
   return (
     <div>
      <BrowserRouter>
@@ -41,7 +58,7 @@ function App() {
               <Main
                 topics={topics}
                 getValue={getValue}
-               // gettoDoing={gettoDoing}
+                gettoDoing={gettoDoing}
               />
             }/>   
           
